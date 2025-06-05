@@ -1,16 +1,28 @@
 
-const emoji = document.getElementById('emoji');
+const leftEye = document.getElementById('left-eye');
+const rightEye = document.getElementById('right-eye');
+const emojiContainer = document.getElementById('emoji-container');
 
 
-function moveEmoji(event) {
+function moveEyes(event) {
 
-  const mouseX = event.clientX;
-  const mouseY = event.clientY;
+  const emojiContainerRect = emojiContainer.getBoundingClientRect();
+  
+  
+  const mouseX = event.clientX - emojiContainerRect.left;
+  const mouseY = event.clientY - emojiContainerRect.top;
 
- 
-  emoji.style.left = `${mouseX - emoji.width / 2}px`;
-  emoji.style.top = `${mouseY - emoji.height / 2}px`;
+
+  const eyeCenterX = emojiContainerRect.width / 2;
+  const eyeCenterY = emojiContainerRect.height / 2;
+
+  
+  const angleLeft = Math.atan2(mouseY - eyeCenterY, mouseX - (eyeCenterX - 25));
+  const angleRight = Math.atan2(mouseY - eyeCenterY, mouseX - (eyeCenterX + 25));
+
+  // Establecer la rotación para cada ojo para que sigan el puntero
+  leftEye.style.transform = `rotate(${angleLeft}rad)`;
+  rightEye.style.transform = `rotate(${angleRight}rad)`;
 }
 
-
-document.addEventListener('mousemove', moveEmoji);
+document.addEventListener('mousemove', moveEyes);
