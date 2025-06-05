@@ -1,8 +1,10 @@
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
+
 
 html, body {
   height: 100%;
@@ -10,35 +12,20 @@ html, body {
   overflow: hidden;
 }
 
+
 #emoji-container {
-  position: relative;
+  position: absolute;
   width: 100%;
   height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
+
 #emoji {
+  position: absolute;
   width: 100%;
   height: 100%;
   object-fit: cover;
-}
-
-#eyes-container {
-  position: absolute;
-  top: 35%;
-  left: 35%;
-  width: 30%;
-  height: 30%;
-  pointer-events: none;
-}
-
-#left-eye, #right-eye {
-  position: absolute;
-  top: 0;
-  width: 50%;
-  height: 100%;
-  pointer-events: none;
-}
-
-#right-eye {
-  left: 50%;
 }
